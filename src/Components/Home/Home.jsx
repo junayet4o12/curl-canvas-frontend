@@ -1,10 +1,12 @@
 // import React from 'react';
 
+import Banner from "./Banner/Banner";
+
 const Home = () => {
     // #51434a #FFFDD0
     return (
         <div>
-            <h2 className="text-3xl font-bold text-center">home</h2>
+            <Banner></Banner>
         </div>
     );
 };
