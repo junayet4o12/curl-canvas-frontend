@@ -4,7 +4,7 @@ import banner from '../../../assets/banner.jpg'
 import './banner.css'
 const Banner = () => {
     return (
-        <div className='max-h-screen overflow-hidden'>
+        <div className='md:max-h-screen md:overflow-hidden'>
             <div className="hero  bg-[#51434a]  p-0">
                 <div className="hero-content gap-0 p-0 flex-col md:flex-row-reverse">
                     <div className='w-[70%] md:w-1/2 '>
