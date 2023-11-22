@@ -1,0 +1,35 @@
+ .navlink {
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+     transition: border-radius 0.5s ease;
+     margin-left: 4px;
+     margin-top: 4px;
+     width: max-content;
+ }
+ .navlink:hover {
+    background: #51434ab3 !important;
+    border-radius: 10px;
+ }
+
+ li .active {
+     background: #51434a !important;
+     border-radius: 4px;
+     font-weight: bold;
+
+     border: 1.5px solid transparent;
+     transition: border-radius 0.5s ease;
+ }
+
+ li .active:hover {
+     border-radius: 10px;
+ }
+
+ .login {
+     border-radius: 5px;
+     transition: background 2s ease, border-radius 0.5s ease;
+ }
+
+ .login:hover {
+     border-radius: 13px;
+     background: #352f32;
+ }
