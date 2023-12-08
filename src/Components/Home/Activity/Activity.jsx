@@ -6,6 +6,7 @@ import { GiHairStrands } from "react-icons/gi";
 import { PiMaskHappyBold } from "react-icons/pi";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import './Activity.css'
 const Activity = () => {
     const axiosPublic = useAxiosPublic()
     const {data: serviceamount={}} = useQuery({
@@ -20,7 +21,7 @@ const Activity = () => {
             <div className='md:max-h-screen md:overflow-hidden'>
                 <div className="hero  ">
                     <div className="hero-content gap-0 p-0 flex-col md:flex-row">
-                        <div className='w-[70%] md:w-1/2 '>
+                        <div className='w-[70%] md:w-1/2 activityImg'>
                             <img src={activityimg} className="" />{/*  */}
                         </div>
                         <div className='md:w-1/2  text-[#FFFDD0] p-5'>
@@ -31,7 +32,7 @@ const Activity = () => {
                             <div>
                                 <div className="stats bg-[#00000031] shadow-xl  flex  flex-wrap  ">
 
-                                    <div className="stat w-[200px] ">
+                                    <div className="stat w-[200px] border-none">
                                         <div className="stat-figure text-primary text-5xl">
                                             <PiMaskHappyBold></PiMaskHappyBold>
                                         </div>
@@ -40,7 +41,7 @@ const Activity = () => {
                                         
                                     </div>
 
-                                    <div className="stat w-[200px]">
+                                    <div className="stat w-[200px] border-none">
                                         <div className="stat-figure text-secondary text-5xl">
                                             <GiHairStrands></GiHairStrands>
                                         </div>

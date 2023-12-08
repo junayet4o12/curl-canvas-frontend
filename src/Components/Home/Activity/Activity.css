@@ -1,0 +1,14 @@
+.activityImg {
+    
+    animation: sway 10s ease-in-out infinite;
+    /* Adjust the duration as needed */
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(20px, 10px); /* Adjust the swing distance and vertical translation as needed */
+      }
+  }

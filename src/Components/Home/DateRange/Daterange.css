@@ -1,0 +1,8 @@
+.react-daterange__inputGroup__input:focus {
+    background: red;
+  }
+  .bg{
+    border-radius: 10px;
+    overflow: hidden;
+    font-weight: bold;
+  }
