@@ -8,7 +8,7 @@ const MainLayout = () => {
         <div className="relative">
             <div className="sticky top-0 z-10">
                 <div className="relative">
-                    <div className="lg:fixed w-full">
+                    <div className=" w-full">
                         <NavBar></NavBar>
                     </div>
                 </div>

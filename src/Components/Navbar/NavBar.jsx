@@ -7,7 +7,7 @@ const NavBar = () => {
     const navli = <>
         <li className=''><NavLink className="hover:text-white navlink" to={'/'}>Home</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/portfolio'}>Our Portfolio</NavLink></li>
-        <li className=''><NavLink className="hover:text-white navlink" to={'/barber'}>Our Barbers</NavLink></li>
+        <li className=''><NavLink className="hover:text-white navlink" to={'/barbers'}>Our Barbers</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/contactus'}>Contact Us</NavLink></li>
        
     </>

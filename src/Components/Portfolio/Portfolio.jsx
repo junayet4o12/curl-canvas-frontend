@@ -19,7 +19,7 @@ const Portfolio = () => {
         return <Loading></Loading>
     }
     return (
-        <div className="bg-[#51434a] pt-20  text-[#FFFDD0]">
+        <div className="bg-[#51434a]   text-[#FFFDD0]">
             <div className="text-center py-7">
                 <Title heading1={'Our'} heading2={'Portfolio'}></Title>
             </div>

@@ -5,7 +5,7 @@ import './banner.css'
 const Banner = () => {
     return (
         <div className='md:max-h-screen md:overflow-hidden'>
-            <div className="hero  bg-[#51434a]  p-0">
+            <div className="hero  bg-[#51434a]  p-0 md:mt-[-50px]">
                 <div className="hero-content gap-0 p-0 flex-col md:flex-row-reverse">
                     <div className='w-[70%] md:w-1/2 '>
                         <img src={banner} className="  shadow-2xl " />{/*  */}
