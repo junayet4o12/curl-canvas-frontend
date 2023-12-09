@@ -4,41 +4,41 @@
       "short_description": "Timeless and refined haircut for a traditional look.",
       "long_description": "The Classic Haircut is a timeless choice that never goes out of style. Our experienced stylists will give you a refined and polished look, tailored to your preferences.",
       "img": "https://i.ibb.co/nQgXJX2/classic-Hair-Cut.jpg",
-      "price": "$30.00"
+      "price": 30.00
     },
     {
       "title": "Trendy Style Session",
       "short_description": "Stay on trend with the latest styles and fashion-forward looks.",
       "long_description": "Our Trendy Style Session is perfect for those who want to stay on top of the latest hair trends. Our skilled stylists will create a modern and fashion-forward look that suits your personality.",
       "img": "https://i.ibb.co/Y0gg0Gy/trendyhaircut.jpg",
-      "price": "$40.00"
+      "price": 40.00
     },
     {
       "title": "Precision Hair Design",
       "short_description": "Precise and personalized hair design for a unique look.",
       "long_description": "Experience the art of Precision Hair Design with our expert stylists. We focus on precision and personalization to create a unique and tailored look that complements your individual style.",
       "img": "https://i.ibb.co/YLmVqyH/precision.jpg",
-      "price": "$50.00"
+      "price": 50.00
     },
     {
       "title": "Signature Cut and Finish",
       "short_description": "A signature cut followed by a professional finish for a complete look.",
       "long_description": "Indulge in our Signature Cut and Finish for a complete hair transformation. Our stylists will craft a signature cut that suits your features, followed by a professional finish for a polished and sophisticated look.",
       "img": "https://i.ibb.co/0Xj9PVk/signature.jpg",
-      "price": "$60.00"
+      "price": 60.00
     },
     {
       "title": "Creative Color Consultation",
       "short_description": "Consult with our experts for a creative and personalized color experience.",
       "long_description": "Embark on a Creative Color Consultation journey with our color experts. Discuss your preferences, explore creative options, and let our professionals guide you to the perfect color that enhances your overall style.",
       "img": "https://i.ibb.co/G2hfw1B/Creative-Color-Consultation.jpg",
-      "price": "$55.00"
+      "price": 55.00
     },
     {
       "title": "Texture and Trim",
       "short_description": "Enhance your hair texture with a precise trim for a fresh look.",
       "long_description": "Revitalize your hair's texture with our Texture and Trim service. Our skilled stylists will provide a precise trim to refresh your look and enhance the natural texture of your hair for a fresh and rejuvenated appearance.",
       "img": "https://i.ibb.co/1G0VRRz/Textureand-Trim.jpg",
-      "price": "$35.00"
+      "price": 35.00
     }
   ]

@@ -1,0 +1,50 @@
+[
+    {
+      "title": "Classic Haircut",
+      "description": "Experience a timeless and versatile haircut that suits your individual style. Our skilled stylists will enhance your natural features.",
+      "clientProfile": "Men and women of all ages",
+      "clientName": "Style Seekers",
+      "price": 60,
+      "serviceName": "Signature Cut"
+    },
+    {
+      "title": "Balayage Highlights",
+      "description": "Achieve a sun-kissed and natural look with our expertly applied balayage highlights. A beautiful blend of colors for a radiant finish.",
+      "clientProfile": "Clients looking for a low-maintenance and trendy hair color",
+      "clientName": "Color Trendsetters",
+      "price": 85,
+      "serviceName": "Sunlit Strands"
+    },
+    {
+      "title": "Hair Spa Treatment",
+      "description": "Indulge in a rejuvenating hair spa treatment that nourishes your hair and promotes overall scalp health. Leave with silky and revitalized locks.",
+      "clientProfile": "Individuals seeking relaxation and hair revitalization",
+      "clientName": "Spa Enthusiasts",
+      "price": 70,
+      "serviceName": "Curl Rejuvenation"
+    },
+    {
+      "title": "Special Occasion Styling",
+      "description": "Whether it's a wedding, party, or special event, let our expert stylists create a stunning hairstyle that complements your outfit and personality.",
+      "clientProfile": "Clients attending special occasions",
+      "clientName": "Event Glamour",
+      "price": 60,
+      "serviceName": "Event Elegance"
+    },
+    {
+      "title": "Brazilian Blowout",
+      "description": "Say goodbye to frizz and welcome smooth, shiny hair with our Brazilian Blowout treatment. Perfect for sleek and manageable hair that lasts.",
+      "clientProfile": "Those with frizzy or unruly hair",
+      "clientName": "Frizz-Free Fans",
+      "price": 20,
+      "serviceName": "Smooth Operator"
+    },
+    {
+      "title": "Children's Haircut",
+      "description": "Make your child's haircut a fun and enjoyable experience. Our kid-friendly stylists will create a look that suits your little one's personality.",
+      "clientProfile": "Children of all ages",
+      "clientName": "Little Trendsetters",
+      "price": 25,
+      "serviceName": "Playful Cuts"
+    }
+  ]
