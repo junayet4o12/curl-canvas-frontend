@@ -10,6 +10,17 @@
     background: #51434ab3 !important;
     border-radius: 10px;
  }
+ .registerFormBtn {
+    border: 1.5px solid transparent;
+    border-radius: 4px;
+     transition:background 1s ease ,border-radius 1s ease, color 1s ease;
+     margin-left: 4px;
+     margin-top: 4px;
+ }
+ .registerFormBtn:hover {
+    background: #84717a !important;
+    border-radius: 10px;
+ }
 
  li .active {
      background: #51434a !important;

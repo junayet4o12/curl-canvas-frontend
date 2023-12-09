@@ -1,5 +1,5 @@
 // import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/curlCanvasLogo.png'
 import './Navbar.css'
 import navbg from '../../assets/navbg.jpg'
@@ -9,11 +9,11 @@ const NavBar = () => {
         <li className=''><NavLink className="hover:text-white navlink" to={'/portfolio'}>Our Portfolio</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/barbers'}>Our Barbers</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/contactus'}>Contact Us</NavLink></li>
-       
+
     </>
     return (
         <div>
-            <div   className="navbar  bg-white    text-black bg-center bg-cover shadow-xl">
+            <div className="navbar  bg-white    text-black bg-center bg-cover shadow-xl ">
                 <div className="navbar-start  ">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,7 +34,9 @@ const NavBar = () => {
                 </div>
                 {/* // #51434a #FFFDD0 */}
                 <div className="navbar-end w-max px-4  ml-auto lg:ml-0">
-                    <a className="btn bg-[#51434a] text-[#FFFDD0] border-none px-7 sm:px-20 uppercase font-bold  login">Log in</a>
+                    <Link to={'/login'}>
+                        <button className="btn bg-[#51434a] text-[#FFFDD0] border-none px-7 sm:px-20 uppercase font-bold  login">LogIn</button>
+                    </Link>
                 </div>
             </div>
         </div>

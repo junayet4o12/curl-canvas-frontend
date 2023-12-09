@@ -6,9 +6,9 @@ import { Rating } from "@mui/material";
 const BarbersCard = ({ data }) => {
     return (
         <div>
-            <div className="card card-side shadow-xl max-w-[600px] bg-[#251f22]">
-                <figure className="w-1/2"><img className="w-full h-full" src={data?.photo} alt="Movie" /></figure>
-                <div className="card-body w-1/2">
+            <div className="card card-side flex-col sm:flex-row shadow-xl max-w-[560px] bg-[#251f22]">
+                <figure className="sm:w-1/2"><img className="w-full h-full" src={data?.photo} alt="Movie" /></figure>
+                <div className="card-body sm:w-1/2">
                     <h2 className="card-title"> {data?.name}</h2>
                     <p>Specialty: {data?.specialty}</p>
                     <p>Experience: {data?.experience} Years</p>

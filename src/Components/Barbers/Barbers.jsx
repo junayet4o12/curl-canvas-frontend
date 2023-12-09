@@ -20,13 +20,15 @@ const Barbers = () => {
     }
     return (
         <div className="bg-[#51434a]   text-[#FFFDD0]">
-            
-            <Title heading1={'Our'} heading2={'Barbers'}></Title>
-            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-5">
-            {
-                barbers.map((data, idx)=> <BarbersCard key={idx} idx={idx} data={data}></BarbersCard>)
-            }
-           </div>
+
+            <div className="py-7 text-center">
+                <Title heading1={'Our'} heading2={'Barbers'}></Title>
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-5 px-5">
+                {
+                    barbers.map((data, idx) => <BarbersCard key={idx} idx={idx} data={data}></BarbersCard>)
+                }
+            </div>
         </div>
     );
 };
