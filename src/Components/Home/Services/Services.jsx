@@ -12,7 +12,7 @@ const Services = () => {
     const { data: services = [] } = useQuery({
         queryKey: ['servicescollection'],
         queryFn: async () => {
-            const res = await axiosPublic.get('http://localhost:3000/services')
+            const res = await axiosPublic.get('/services')
             return res?.data
         }
     })

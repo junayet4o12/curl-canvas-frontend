@@ -8,7 +8,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
         <div>
-            <footer className="footer gap-4 text-[#FFFDD0] footer-center p-10 bg-[#45393f]  rounded">
+            <footer className="footer gap-4 text-[#FFFDD0] footer-center p-10 bg-[#45393f]">
 
                 <nav>
                     <img className="w-32 h-28" src={logo} alt="" />

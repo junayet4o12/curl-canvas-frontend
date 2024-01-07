@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Alex Barber",
+        "specialty": "Classic Cuts",
+        "experience": 8,
+        "rating": 4.7,
+        "availability": true,
+        "photo": "https://i.ibb.co/vL4yzZS/barber-3.jpg",
+        "workCompleted": 300,
+        "fee": 3,
+        "criteria": "female"
+    },
+    {
+        "name": "Jake Razor",
+        "specialty": "Beard Grooming",
+        "experience": 5,
+        "rating": 4.6,
+        "availability": false,
+        "photo": "https://i.ibb.co/vcQ7sVt/barber5.jpg",
+        "workCompleted": 200,
+        "fee": 5,
+        "criteria": "male"
+    },
+    {
+        "name": "Emily Styles",
+        "specialty": "Modern Trends",
+        "experience": 6,
+        "rating": 4.5,
+        "availability": false,
+        "photo": "https://i.ibb.co/dQRvX2k/barber1.jpg",
+        "workCompleted": 250,
+        "fee": 4,
+        "criteria": "female"
+    },
+    {
+        "name": "Lily Scissors",
+        "specialty": "Creative Styling",
+        "experience": 9,
+        "rating": 4.9,
+        "availability": true,
+        "photo": "https://i.ibb.co/D5HD1th/barber6.jpg",
+        "workCompleted": 450,
+        "fee": 2,
+        "criteria": "female"
+    },
+    {
+        "name": "Max Clipper",
+        "specialty": "Fade Master",
+        "experience": 10,
+        "rating": 4.9,
+        "availability": true,
+        "photo": "https://i.ibb.co/2kSfMQk/barber2.jpg",
+        "workCompleted": 500,
+        "fee": 5,
+        "criteria": "male"
+    },
+    {
+        "name": "Sophie Shears",
+        "specialty": "Color Specialist",
+        "experience": 7,
+        "rating": 4.8,
+        "availability": true,
+        "photo": "https://i.ibb.co/8YzzxgW/barber4.jpg",
+        "workCompleted": 400,
+        "fee": 4,
+        "criteria": "male"
+    }
+]

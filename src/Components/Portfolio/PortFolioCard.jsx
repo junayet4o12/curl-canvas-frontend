@@ -4,8 +4,8 @@
 const PortFolioCard = ({ idx, data }) => {
     return (
         <div>
-            <div className="hero   max-w-[600px] bg-[#251f22] md:h-[350px]">
-                <div className={`hero-content flex-col md:${!(idx === 0 || idx === 3 || idx === 4) ? 'flex-row' : 'flex-row-reverse'} overflow-hidden px-4 md:px-10`}>
+            <div className="hero   max-w-[600px] bg-[#251f22] md:h-[250px]">
+                <div className={`hero-content flex-col md:${(idx % 4 === 0 || (idx + 1) % 4 === 0) ? 'flex-row' : 'flex-row-reverse'} overflow-hidden px-4 md:px-10`}>
                     <img className="w-[300px] h-[200px]" src={data?.servicePhoto} />
                     <div>
                         <div className="avatar">
