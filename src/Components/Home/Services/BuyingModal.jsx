@@ -9,8 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Calendar, DateRange } from "react-date-range";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-
-const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
+import { ImCross } from "react-icons/im";
+const BuyingModal = ({ serviceRefetch, closeModal, id, open, booked }) => {
     const { user } = useAuth();
     // console.log(user?.email);
     const axiosPublic = useAxiosPublic()
@@ -21,40 +21,8 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
     const [error, seterror] = useState('')
     const [registerInformation, setregisterInformation] = useState({})
     const [date, setDate] = useState(null);
-    const [state, setState] = useState([
-
-        {
-            startDate: new Date('Mon Jan 08 2024'),
-            endDate: new Date('Mon Jan 08 2024'),
-            key: 'selection1',
-            autoFocus: false
-        },
-        {
-            startDate: new Date('Mon Jan 09 2024'),
-            endDate: new Date('Mon Jan 09 2024'),
-            key: 'selection2',
-            autoFocus: false
-        },
-        {
-            startDate: new Date('Mon Jan 10 2024'),
-            endDate: new Date('Mon Jan 10 2024'),
-            key: 'selection3',
-            autoFocus: false
-        },
-        {
-            startDate: new Date('Mon Jan 11 2024'),
-            endDate: new Date('Mon Jan 11 2024'),
-            key: 'selection4',
-            autoFocus: false
-        },
-        {
-            startDate: new Date('Mon Jan 12 2024'),
-            endDate: new Date('Mon Jan 12 2024'),
-            key: 'selection5',
-            autoFocus: false
-        },
-
-    ]);
+    const [state, setState] = useState(booked ? booked : []);
+    console.log(booked, state);
     const [selectedServiceDate, setSelectedServiceDate] = useState('')
     const [genderError, setGenderError] = useState('')
     const [barberError, setBarberError] = useState('')
@@ -77,6 +45,9 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
         "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4",
         "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39"
     ]
+    useEffect(() => {
+        setState(booked ? booked : [])
+    }, [booked])
     const { data: service = {}, isLoading } = useQuery({
         queryKey: ['singleService', id],
         queryFn: async () => {
@@ -116,6 +87,7 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
 
 
     const handlebarber = e => {
+        console.log(e.target.value.split(',')[0]);
         setselectedbarber(e.target.value)
     }
     const handleGenderChange = (gender) => {
@@ -123,22 +95,8 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
         setselectedbarber('')
     };
 
-    const handleConfirm = () => {
-        console.log(registerInformation);
-        setopenchild(false)
-        closeModal(false)
-        reset()
-        setselectedbarber('')
-        setSelectedGender('')
-        setDate(null)
-        Swal.fire({
-            icon: "success",
-            title: "Registration successfull",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    }
-    const barberFee = barbers?.find(barber => selectedbarber === barber?.name)?.fee;
+
+    const barberFee = barbers?.find(barber => selectedbarber?.split(',')[0] === barber?.name)?.fee;
     const netFee = service?.price + barberFee;
     const handleChange = () => {
         // const selectedStartDate = ranges.selection.startDate;
@@ -151,9 +109,10 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
         const setinDate = {
             startDate: itemDate,
             endDate: itemDate,
-            key: `selection${user?.email}`
+            key: `selection${user?.email} ${booked?.length}`
         }
-        const filterTheDate = state.filter(set => set?.key !== `selection${user?.email}`)
+        const filterTheDate = state.filter(set => set?.key !== `selection${user?.email} ${booked?.length}`)
+        console.log(filterTheDate);
         const findByDate = filterTheDate.find(set => set?.startDate.getTime() === itemDate.getTime())
         if (findByDate) {
             setopenchild2(true)
@@ -164,7 +123,7 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
         }
         setDate(itemDate)
         setSelectedServiceDate(setinDate)
-        setState([...state.filter(set => set?.key !== `selection${user?.email}`), setinDate])
+        setState([...state.filter(set => set?.key !== `selection${user?.email} ${booked?.length}`), setinDate])
     }
     const onSubmit = (data) => {
         setGenderError('')
@@ -172,21 +131,54 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
         setDateError('')
         const name = data?.name;
         const email = user?.email;
-        const barber = selectedbarber;
+        const barber = selectedbarber?.split(',')[0];
+        const barberId = selectedbarber?.split(',')[1]
+        const serviceId = id;
         const fees = netFee;
         const gender = selectedGender;
         const age = data?.age;
         const number = data?.number;
-        const serviceDate = selectedServiceDate;
-        if (!gender || !barber || !serviceDate) {
+        const serviceDate = {
+            startDate: selectedServiceDate?.startDate,
+            endDate: selectedServiceDate?.endDate,
+            key: `section ${user?.email} ${(new Date()).getTime()}`,
+            autoFocus: false
+
+        };
+        if (!gender || !barber || !selectedServiceDate) {
             setGenderError(!gender ? 'Please select gender' : '')
             setBarberError(!barber ? 'Please select barber' : '')
-            setDateError(!serviceDate ? 'Please select Date' : '')
+            setDateError(!selectedServiceDate ? 'Please select Date' : '')
             return
         }
-        const requestData = { name, email, fees, barber, age, number, date, gender }
+        const requestData = { name, email, fees, barber, barberId, serviceId, age, number, serviceDate, gender }
         setregisterInformation(requestData)
         setopenchild(true)
+    }
+    const handleConfirm = () => {
+        console.log(registerInformation);
+        setopenchild(false)
+        axiosPublic.post('/register', registerInformation)
+            .then(res => {
+                console.log(res?.data);
+                if (res?.data?.result1?.insertedId && res?.data?.result2?.modifiedCount > 0 && res?.data?.result3?.modifiedCount > 0) {
+                    closeModal(false)
+                    reset()
+                    setselectedbarber('')
+                    setSelectedGender('')
+                    setDate(null)
+                    serviceRefetch()
+                    setState(booked)
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registration successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+
+
     }
     return (
         <div>
@@ -201,9 +193,11 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
 
 
 
-                <div className="bg-purple-300  mx-auto my-auto p-5 overflow-hidden  max-h-[90vh] overflow-y-scroll max-w-[700px]">
+                <div className="bg-purple-300  mx-auto my-auto p-5 pt-0 px-5 overflow-hidden  max-h-[90vh] overflow-y-scroll max-w-[700px] relative">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <h2 onClick={() => closeModal()} className="sticky bg-purple-300 left-[100%] mr-[-10px] top-4 text-lg btn btn-sm  p-2 pt-[5px] border-black hover:bg-purple-400 hover:border-gray-500 z-20"><ImCross></ImCross></h2>
                         <h2 className="text-2xl font-bold text-center py-2">Registration Form</h2>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-x-5 ">
                             <div className="  ">
                                 <label className="label">
@@ -280,7 +274,7 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
                                     <select value={selectedbarber} onChange={handlebarber} required name="barber" disabled={!selectedGender} className="select select-bordered">
                                         <option value={''} disabled selected>Pick barbers</option>
                                         {
-                                            (selectedGender === 'female' ? femaleBarber : maleBarber).map((barber, idx) => <option key={idx} value={barber?.name
+                                            (selectedGender === 'female' ? femaleBarber : maleBarber).map((barber, idx) => <option key={idx} value={[barber?.name, barber?._id]
                                             }>{barber?.name}</option>)
                                         }
 
@@ -344,6 +338,7 @@ const BuyingModal = ({ handleBuy, closeModal, id, open }) => {
                                 <Calendar
                                     onChange={item => setSelectedDate(item)}
                                     date={date}
+                                    color={`${fiftyColors[booked ? booked?.length : 0]}`}
                                 />
                                 <p className="text-sm font-bold text-red-500">{dateError}</p>
                             </div>

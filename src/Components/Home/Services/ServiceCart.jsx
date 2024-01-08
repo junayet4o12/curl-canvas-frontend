@@ -3,10 +3,15 @@
 import { useState } from 'react';
 import './Services.css'
 import BuyingModal from './BuyingModal';
-const ServiceCart = ({ service }) => {
+const ServiceCart = ({ service, serviceRefetch }) => {
     const [open, setOpen] = useState(false);
-    const { _id, title, short_description, long_description, img, price } = service
-
+    const { _id, title, short_description, long_description, img, price, booked } = service
+    booked?.forEach(set => {
+        set.startDate = new Date(set?.startDate);
+        set.endDate = new Date(set?.endDate)
+        set.key
+        set.autoFocus = false
+    });
     const handleBuy = () => {
         setOpen(true)
     }
@@ -28,7 +33,7 @@ const ServiceCart = ({ service }) => {
                     </div>
                 </div>
             </div>
-            <BuyingModal  handleBuy={handleBuy} closeModal={closeModal} id={_id} open={open}></BuyingModal>
+            <BuyingModal serviceRefetch={serviceRefetch} closeModal={closeModal} id={_id} booked={booked} open={open}></BuyingModal>
         </div>
     );
 };

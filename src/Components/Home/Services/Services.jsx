@@ -9,7 +9,7 @@ import { useState } from "react";
 const Services = () => {
     const axiosPublic = useAxiosPublic()
     const [showall, setshowall] = useState(true)
-    const { data: services = [] } = useQuery({
+    const { data: services = [], refetch } = useQuery({
         queryKey: ['servicescollection'],
         queryFn: async () => {
             const res = await axiosPublic.get('/services')
@@ -26,7 +26,7 @@ const Services = () => {
             <div>
                 <div className="flex flex-wrap justify-center items-center gap-5 p-5">
                     {
-                        services.slice(0, (showall ? 3 : services.length)).map(service => <ServiceCart key={service?._id} service={service}></ServiceCart>)
+                        services.slice(0, (showall ? 3 : services.length)).map(service => <ServiceCart key={service?._id} service={service} serviceRefetch={refetch}></ServiceCart>)
                     }
                 </div>
                 <div className="text-center pt-5">
