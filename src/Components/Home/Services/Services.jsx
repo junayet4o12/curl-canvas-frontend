@@ -16,7 +16,6 @@ const Services = () => {
             return res?.data
         }
     })
-    console.log(services);
     return (
         <div className="bg-[#51434a] text-[#FFFDD0] py-16 px-4">
 

@@ -3,7 +3,7 @@
 import { Box, CircularProgress } from "@mui/material";
 
 
- 
+  
 const Loading = () => {
     return (
         <div className="h-max w-max mx-auto mt-20">

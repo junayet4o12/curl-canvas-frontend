@@ -2,15 +2,39 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/curlCanvasLogo.png'
 import './Navbar.css'
-import navbg from '../../assets/navbg.jpg'
+import useAuth from '../../hooks/useAuth';
+import { Avatar, Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import { Badge } from '@mui/base';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useState } from 'react';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../Shared/Loading';
+import useRegisterData from '../../hooks/useRegisterData';
 const NavBar = () => {
+    const { user, logOut } = useAuth()
+    const {userRegister, userRegisterLoading} = useRegisterData()
+    const axiosPublic = useAxiosPublic()
+
+    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+    const [anchorElUser, setAnchorElUser] = useState(null);
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+    const handleCloseUserMenu = (setting) => {
+        if (setting === 'Logout') {
+            logOut()
+        }
+        setAnchorElUser(null);
+    };
+console.log(userRegisterLoading);   
     const navli = <>
         <li className=''><NavLink className="hover:text-white navlink" to={'/'}>Home</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/portfolio'}>Our Portfolio</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/barbers'}>Our Barbers</NavLink></li>
         <li className=''><NavLink className="hover:text-white navlink" to={'/contactus'}>Contact Us</NavLink></li>
-
     </>
+
     return (
         <div>
             <div className="navbar  bg-white    text-black bg-center bg-cover shadow-xl ">
@@ -34,12 +58,53 @@ const NavBar = () => {
                 </div>
                 {/* // #51434a #FFFDD0 */}
                 <div className="navbar-end w-max px-4  ml-auto lg:ml-0">
-                    <Link to={'/login'}>
-                        <button className="btn bg-[#51434a] text-[#FFFDD0] border-none px-7 sm:px-20 uppercase font-bold  login">LogIn</button>
-                    </Link>
+                    {
+                        user?.email ? <>
+                            <Box sx={{ display: 'flex', gap: '10px' }}>
+
+                                <IconButton
+                                    size="small"
+                                    aria-label="show 17 new notifications"
+                                    color="inherit"
+                                >
+                                    <Badge badgeContent={userRegisterLoading ? <span className="loading loading-ring loading-xs"></span> : userRegister?.length} color="error">
+                                        <NotificationsIcon />
+                                    </Badge>
+                                </IconButton>
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt="Remy Sharp" src={user?.photoURL} />
+                                </IconButton>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    {settings.map((setting) => (
+                                        <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                            </Box>
+                        </> :
+                            <Link to={'/login'}>
+                                <button className="btn bg-[#51434a] text-[#FFFDD0] border-none px-7 sm:px-20 uppercase font-bold  login">LogIn</button>
+                            </Link>
+                    }
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

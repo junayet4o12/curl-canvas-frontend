@@ -3,12 +3,7 @@
 import banner from '../../../assets/banner.jpg'
 import './banner.css'
 const Banner = () => {
-    let array = [];
-    for (let i = 1; i <= 30; i++) {
-        array.push(i)
-    }
-    const newarray = array.filter(a => a % 4 !== 0 && (a + 1) % 4 !== 0)
-    console.log(newarray);
+    
     return (
         <div className='md:max-h-screen md:overflow-hidden'>
             <div className="hero  bg-[#51434a]  p-0 md:mt-[-50px]">

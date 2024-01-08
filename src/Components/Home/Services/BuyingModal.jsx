@@ -10,10 +10,12 @@ import { Calendar, DateRange } from "react-date-range";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { ImCross } from "react-icons/im";
+import useRegisterData from "../../../hooks/useRegisterData";
 const BuyingModal = ({ serviceRefetch, closeModal, id, open, booked }) => {
     const { user } = useAuth();
     // console.log(user?.email);
     const axiosPublic = useAxiosPublic()
+    const {userRegisterRefetch} = useRegisterData()
     const [openchild, setopenchild] = useState(false)
     const [openchild2, setopenchild2] = useState(false)
     const [selectedGender, setSelectedGender] = useState('');
@@ -22,7 +24,6 @@ const BuyingModal = ({ serviceRefetch, closeModal, id, open, booked }) => {
     const [registerInformation, setregisterInformation] = useState({})
     const [date, setDate] = useState(null);
     const [state, setState] = useState(booked ? booked : []);
-    console.log(booked, state);
     const [selectedServiceDate, setSelectedServiceDate] = useState('')
     const [genderError, setGenderError] = useState('')
     const [barberError, setBarberError] = useState('')
@@ -53,7 +54,6 @@ const BuyingModal = ({ serviceRefetch, closeModal, id, open, booked }) => {
         queryFn: async () => {
             const res = await axiosPublic.get(`/service/${id}`)
             return res?.data
-
         }
     })
     const { data: barbers, isLoading: barbersLoading } = useQuery({
@@ -169,6 +169,7 @@ const BuyingModal = ({ serviceRefetch, closeModal, id, open, booked }) => {
                     setDate(null)
                     serviceRefetch()
                     setState(booked)
+                    userRegisterRefetch()
                     Swal.fire({
                         icon: "success",
                         title: "Registration successfull",
